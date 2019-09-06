@@ -32,7 +32,8 @@ makeLenses ''StackPackagesConfig
 getStackPackageFromDb :: DB.HackageDB -> StackPackage -> IO Package
 getStackPackageFromDb hackageDb stackPackage = do
   PackageSourceSpec.getPackage'
-    False
+    NoHpack
+    True -- fetch submodules
     (pure hackageDb)
     (stackLocationToSource (stackPackage ^. spLocation) (stackPackage ^. spDir))
 

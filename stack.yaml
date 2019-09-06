@@ -1,11 +1,15 @@
-resolver: lts-12.2
+resolver: lts-14.4
 extra-deps:
-  - yaml-0.8.31.1
-  - git: https://github.com/fpco/stackage-curator.git
-    commit: 73c5ed06602990c33d3fec1711e27875f283b6bf
-  - git: https://github.com/jwiegley/gitlib.git
-    commit: 70c99759b8b9377f67492fe29afb32f05882409d
-    subdirs:
-      - gitlib
-      - gitlib-libgit2
-
+- git: https://github.com/fpco/stackage-curator.git
+  commit: a9bf9ef02976f7d29ff0d977d9e0c19bba22d2cd
+- git: https://github.com/jwiegley/gitlib.git
+  commit: 6520ffcfdc33a0f53fdeeb01c9ef2d55f8d367fb
+  subdirs:
+    - gitlib
+    - gitlib-libgit2
+- git: https://github.com/brendanhay/amazonka.git
+  commit: 4e25f15227e556ad9e6ab99eeee6444152125a24
+  subdirs:
+    - amazonka
+    - amazonka-s3
+    - core

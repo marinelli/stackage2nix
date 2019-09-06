@@ -47,6 +47,7 @@ getPackageFromRepo allCabalHashesPath mSha1Hash pkgId = do
       (error (display pkgId ++ ": meta data has no SHA256 hash for the tarball"))
       (view (mHashes . at "SHA256") meta)
     source = DerivationSource "url" ("mirror://hackage/" ++ display pkgId ++ ".tar.gz") "" tarballSHA256
+      Nothing
   return $ Package source False pkgDesc
 
 getPackageFromDb :: DB.HackageDB -> PackageIdentifier -> IO Package
@@ -79,7 +80,7 @@ buildPackageSetConfig
   -> BuildPlan
   -> IO PackageSetConfig
 buildPackageSetConfig hackageDb optAllCabalHashes optNixpkgsRepository buildPlan = do
-  nixpkgs <- readNixpkgPackageMap optNixpkgsRepository Nothing
+  nixpkgs <- readNixpkgPackageMap ["-f", optNixpkgsRepository]
   let
     systemInfo      = bpSystemInfo buildPlan
     packageVersions = fmap ppVersion (bpPackages buildPlan) `Map.union` siCorePackages systemInfo
