@@ -33,7 +33,7 @@ getStackPackageFromDb :: DB.HackageDB -> StackPackage -> IO Package
 getStackPackageFromDb hackageDb stackPackage = do
   PackageSourceSpec.getPackage'
     NoHpack
-    True -- fetch submodules
+    False -- do not fetch submodules
     (pure hackageDb)
     (stackLocationToSource (stackPackage ^. spLocation) (stackPackage ^. spDir))
 
