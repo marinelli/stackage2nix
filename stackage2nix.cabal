@@ -31,11 +31,10 @@ library
                      , LtsHaskell
                      , Paths_stackage2nix
   build-depends:       base > 4.7 && < 5
-                     , Cabal > 2.2
-                     , QuickCheck
                      , aeson
                      , bytestring
-                     , cabal2nix >= 2.7.2
+                     , Cabal > 2.2
+                     , cabal2nix >= 2.14
                      , containers
                      , deepseq
                      , distribution-nixpkgs >= 1.1
@@ -50,6 +49,7 @@ library
                      , network-uri
                      , optparse-applicative
                      , pretty
+                     , QuickCheck
                      , stackage-curator >= 0.15
                      , tagged
                      , text
